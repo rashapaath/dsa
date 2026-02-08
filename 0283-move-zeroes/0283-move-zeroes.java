@@ -20,8 +20,10 @@ class Solution {
         }
         for(int j=i;j<nums.length;j++){
             nums[j]=0;
-        }*/
-        //optimal two pointers
+        }
+        //better two pointers
+        tc=o(2n);
+        sc=o(1)
          int i=0;
         for(int j=0;j<nums.length;j++){
             if(nums[j]!=0){
@@ -32,6 +34,21 @@ class Solution {
         while(i<nums.length) {
             nums[i]=0;
             i++;
+        }
+        */
+        /*
+        optimal
+        tc=
+        sc=
+        */
+        int i=0;
+        for(int j=0;j<nums.length;j++){
+            if(nums[j]!=0){
+                int temp=nums[j];
+                nums[j]=nums[i];
+                nums[i]=temp;
+                i++;
+            }
         }
     }
 }

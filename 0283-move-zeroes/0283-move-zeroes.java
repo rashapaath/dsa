@@ -1,15 +1,22 @@
+import java.util.ArrayList;
 class Solution {
+    //tc=o(2n)
+    //sc=o(k)=o(n)
     public void moveZeroes(int[] nums) {
-        int i=0;
-        for(int j=0;j<nums.length;j++){
-            if(nums[j]!=0){
-                int temp=nums[i];
-                nums[i]=nums[j];
-                nums[j]=temp;
-                i++;
-            }
-
-        }
+        ArrayList<Integer> list=new ArrayList<>();
         
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]!=0){
+                list.add(nums[i]);
+                           }
+        }
+        int i=0;
+        for(int elt:list){
+            nums[i]=elt;
+            i++;
+        }
+        for(int j=i;j<nums.length;j++){
+            nums[j]=0;
+        }     
     }
 }

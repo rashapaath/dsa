@@ -1,18 +1,14 @@
 class Solution {
     public int maxProfit(int[] prices) {
-        int buyprice=prices[0];
-        int profit=0;//inintially let buy and sell on same day therefore the profit=0;
-        //keep incrementing the selldayy 
-        //updating profit if current profit is maximum
-        //updating buy if current sellprice less than current buy price
-        //keep incrementing sellday
-        for(int sellday=1;sellday<prices.length;sellday++){
-            int sellprice=prices[sellday];
-            profit=Math.max(profit,sellprice-buyprice);
-            buyprice=Math.min(buyprice,sellprice);
-
+        //using dp
+        //as we only moving forward that is not considering previous day cost 
+        int minprice=prices[0];
+        int profit=0;
+        for(int i=1;i<prices.length;i++){
+            int diff=prices[i]-minprice;
+            profit=Math.max(profit,diff);
+            minprice=Math.min(minprice,prices[i]);
         }
         return profit;
-        
     }
 }

@@ -1,38 +1,35 @@
 class Solution {
     public void nextPermutation(int[] nums) {
-        int n=nums.length;
-        //1)finding break point
-        int dipindex=-1;
-        for(int i=n-2;i>=0;i--){
-            if(nums[i]<nums[i+1]){
-                dipindex=i;
-                break;
+        int n = nums.length;
+
+        int i = n - 2;
+        while (i >= 0 && nums[i] >= nums[i + 1]) {
+            i--;
+        }
+
+        if (i >= 0) {
+            int j = n - 1;
+            while (nums[j] <= nums[i]) {
+                j--;
             }
+            swap(nums, i, j);
         }
-        if(dipindex==-1){
-           reverse(0,nums.length-1,nums);
-           return;
-        }
-        //2)finding min elt swap
-        for(int i=n-1;i>dipindex;i--){
-            if(nums[i]>nums[dipindex]){
-                int temp=nums[dipindex];
-                nums[dipindex]=nums[i];
-                nums[i]=temp;
-                break;
-            }
-        }
-        //3)reverse remaining part
-        reverse(dipindex+1,nums.length-1,nums);
-        
+
+        reverse(nums, i + 1, n - 1);
     }
-    public void reverse(int ini,int end,int[] nums){
-        while(ini<end){
-            int temp=nums[ini];
-            nums[ini]=nums[end];
-            nums[end]=temp;
-            ini++;
-            end--;
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    private void reverse(int[] nums, int left, int right) {
+        while (left < right) {
+            swap(nums, left, right);
+            left++;
+            right--;
         }
     }
-}
+
+    }

@@ -3,6 +3,7 @@ class Solution {
         int n = nums.length;
 
         int index = -1;
+    
 
         for (int i = n - 2; i >= 0; i--) {
             if (nums[i] < nums[i + 1]) {
